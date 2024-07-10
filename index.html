@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bus_ticket_management</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Appoint Date</th>
+            <th>From Location</th>
+            <th>To Location</th>
+            <th>Status</th>
+        </tr>
+        <?php
+
+        if ($result->num_rows > 0)
+            while($row = $result->fetch_assoc())
+            {
+                echo "<tr>";
+                echo "<td>" . $row["id"] . "</td>";
+                echo "<td>" . $row["name"] . "</td>";
+                echo "<td>" . $row["appt_date"] . "</td>";
+                echo "<td>" . $row["from_location"] . "</td>";
+                echo "<td>" . $row["to_location"] . "</td>";
+                echo "<td>" . $row["status"] . "</td>";
+                echo "</tr>";
+            }else {
+                echo "<tr><td colspan='6'>No bookings found</td></tr>";
+            }
+            ?>
+
+            <button onclick="window.location.href='addBooking.php'"> Add Booking</button>
+            <button onclick="window.location.href='cancelBooking.php'"> Cancel Booking</button>
+</body>
+</html>
